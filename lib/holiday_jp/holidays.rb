@@ -13,7 +13,8 @@ module HolidayJp
       else
         yaml = YAML.load_file(file)
       end
-      yaml.map do |key, value|
+      yaml.map do |orig_key, value|
+        key = orig_key.to_date
         @holidays[key] = Holiday.new(key, value)
       end
     end
